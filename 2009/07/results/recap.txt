@@ -1,0 +1,120 @@
+Another five people/five languages competition, and again we've got some pretty creative stuff -- some of the coolest we've seen yet.  As always, it's a Wiki, so if I got something wrong, feel free to correct.
+----
+h2. Ron (Lisp)
+
+Ronaldo channelled his inner John McCarthy-worshipping undergraduate (What, you don't have one?) and put together a little Lisp program (must...resist...commenting...on...parentheses...or macros...) making liberal use of the controversial format function (but we won't be unduly harsh just because of that\!).
+
+Ron's program follows the pattern of building the diamond from the top and the bottom at the same time, only meeting in the middle to print out the single unique line:
+
+{code}(defun format-diamond (x y)
+    (if (eql x (car (last y)))
+        (format-diamond-line x y)
+        (concatenate 'string (format-diamond-line x y)
+                             (format-diamond (next-char x) y)
+                             (format-diamond-line x y))))
+{code}For the lisp impaired (including yours truly, it took some thinking to get this), what we have here is a funtion that takes two arguments: the character representing the row we're currently drawing, and the list of all the characters we'll draw.
+
+So (eql x (car (last y))) is basically asking if the current row is equal to the first element of the last construct of the list of all chracters.  You can shorten this to "Is this is the last character?"  If it is, we're done (that's the unique line) otherwise we draw the two rows for our diamond and recurse, basically building it like this (for C):
+
+Iteration 1: (A, C)
+{code}  A
+  A
+{code}Iteration 2: (B, C)
+{code}  A
+ B B
+ B B
+  A
+{code}Iteration 2: (C, C)
+{code}  A
+ B B
+C   C
+ B B
+  A
+{code}And we're done\!  Cool beans, Fronto.
+----
+h2. Case (Python/Quake)
+
+Case's program isn't very interesting in how it works (and because it takes 20MB worth of stuff to see it in action, you'll have to ask for a copy instead of having it in the competition zipfile), but in how it presents itself.  It's a Quake map with every letter of the alphabet listed.  Shoot one and the diamond rises magestically from the lava in the middle of the level.  Check it out:
+
+!case-small.jpg!
+----
+h2. Peter (VBA)
+
+Peter decided to go with the old standby of running a macro in a MS Word document and then displaying the results in an excel spreadsheet.  Oh wait, what's that you say, that's *not* an old standby?  Oops.
+
+Peter takes a slightly different direction from Ron by drawing the diamond in a simple top to bottom style, but instead of some tortured logic, he just takes the limit negative and draws all the rows he needs (note the use of Abs) And because of the nature of Excel, rather than a specific piece of code to ensure printing out A only once, it simply prints it twice in the same place.  Here's the critical section:
+
+{code}For counter = -limit To limit
+    If counter <> 0 And counter <> 1 Then
+        char = Chr(Abs(limit) - Abs(counter) + Asc("A"))
+        sheet.Cells(row, Abs(counter)) = char
+        sheet.Cells(row, limit - Abs(counter) + limit) = char
+        row = row + 1
+    End If
+Next
+{code}So not just an interesting way to show the results, but also a neat way to take advantage of that display.
+----
+h2. Sheldon (Perl)
+
+Another contest and another Perl gem from Larry Wall's favorite dart player (I dunno if Damian Conway plays darts, tho), this one is shaped like a diamond\!:
+
+{code}            $s=
+           "A" ;
+          $w= ord
+         (uc(shift
+        ))-ord($s);
+       $e =$w*2; for
+      (0..$w) { $l[$_
+     ]=" " x ( $w- $_)
+      . $s.(" "x(($_*
+       2)-1)).( $_==
+        0 ?"" : $s)
+         ;$l[$e--]
+          =$l[$_]
+           ;$s++
+            ; }
+
+    print "$_\n" for @l;
+{code}Once you unravel it you will see that foo is doing a similar bit to Ron, except that he "allocates" (yay perl\!) all the space up front, so the construction of "C" looks more like this:
+
+{code}  A
+
+
+
+  A
+{code}
+{code}  A
+ B B
+
+ B B
+  A
+{code}
+{code}  A
+ B B
+C   C
+ B B
+  A
+{code}
+----
+h2. Nathan (Ruby)
+
+Nathan tried to write the shortest Ruby program he could for this challenge, and came up with this (yes, this is the whole thing), a mere 114 characters.
+
+{code}z=ARGV[0][0];a=[];(65..z).each{|b|a<<' '*(z-b)+b.chr+(b>65?(' '*(b*2-131)+b.chr):'')};puts a;a.pop;puts a.reverse
+{code}In another unique way to run at this program (showing it takes all kinds) this script actually renders the top triangle of the diamond, shaves the base (since it is the one unique line) and then flips it and prints it out to complete the diamond.
+
+Proof that Perl isn't the only golfable language\!
+----
+h2. Darko (Java)
+
+Darko may have written his program in Java, but it's pretty clever all the same, giving us yet another (is that four?) different way to draw the diamond, but this is among the best.  Darko basically builds a "compressed" diamond consisting of all the characters needed to creat the diamond taking advantage of all the whitespace, so for drawing "D", the compressed diamond would look like this:
+
+{code}DCBABCD
+{code}He then creates a little for loop where he just removes everything that doesn't belong for the row:
+
+{code}for (int i = c; i <= c + 2 * d; i++) {
+  System.out.println(s.substring(a,b).replaceAll("[^" + s.charAt(i) + "]", " "));
+}
+{code}
+----
+You can download all the solutions [here|^ProgrammingChallenge200907.zip] if you'd like to check them out, and you should just for fun.

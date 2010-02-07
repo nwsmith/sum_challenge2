@@ -1,0 +1,61 @@
+Define "VerticalLine[[x y size][
+  SetXY :x :y
+  SetHeading 180
+  Pu
+  Repeat :size [ Pd Fd :segment Pu Fd :gap ]
+]]
+
+Define "HorizontalLine[[x y size][
+  SetXY :x :y
+  SetHeading 90
+  Pu
+  Repeat :size [ Pd Fd :segment Pu Fd :gap ]
+]]
+
+Define "DrawNumber[[x y size num][
+  Pu
+  If Member? :num [4 5 6 8 9 0] [
+    VerticalLine :x :y :size
+  ]
+  If Member? :num [2 6 8 0] [
+    VerticalLine :x :y - :gap - (:segment + :gap) * :size :size
+  ]
+  If Member? :num [2 3 5 6 7 8 9 0] [
+    HorizontalLine :x + :gap :y + :gap :size
+  ]
+  If Member? :num [2 3 4 5 6 8 9] [
+    HorizontalLine :x + :gap :y - (:segment + :gap) * :size :size
+  ]
+  If Member? :num [2 3 5 6 8 9 0] [
+    HorizontalLine :x + :gap :y - :gap - (2 * (:segment + :gap)) * :size :size
+  ]
+  If Member? :num [1 2 3 4 7 8 9 0] [
+    VerticalLine :x + :gap + (:segment + :gap) * :size :y :size
+  ]
+  If Member? :num [1 3 4 5 6 7 8 9 0] [
+    VerticalLine :x + :gap + (:segment + :gap) * :size :y - :gap - (:segment + :gap) * :size :size
+  ]
+]]
+
+Define "RenderLED[[numbers size][
+  Make "segment 40
+  Make "gap 10
+  Make "x -500
+  Make "y 300
+  Make "i 1
+
+  Repeat Count :numbers [
+    DrawNumber :x :y :size Item :i :numbers
+    Make "x :x + :segment + :size * (:segment + :gap)
+    Make "i :i + 1
+  ]
+]]
+
+cs
+
+Print [Enter the numbers]
+Make "numbers ReadList
+Print [Enter the size]
+Make "size ReadWord
+
+RenderLED :numbers :size

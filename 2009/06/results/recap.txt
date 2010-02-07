@@ -1,0 +1,62 @@
+h2. June 2009 Recap
+
+What a month - Eight entries, eight languages\!&nbsp; Here we got to see some really creative stuff - you can do some really crazy things with simple problems\!
+
+----
+First up this month is Case.  You'll think his entry is a joke because when you open the file, it's empty.  Then you'll realize it's been written in [Whitespace|http://en.wikipedia.org/wiki/Whitespace_(programming_language)], and you'll take another look and realize the file is full of whitespace.  I have no idea what the program is actually doing, although it's likely a fairly standard algorithm that has a nice representation in a stack based language.  But unless someone actually wants to read this thing, only Case knows for sure...
+----
+Nathan brought in some Erlang, which is like some beastly combination of Lisp and Prolog.  He has a nice two line recursive function building a dynamic list that ends up being the result.  It's dynamic and recursive because everything appears to be immutable in Erlang (as it is in any functional language).  The main point is here:
+
+{code}convert([], 0) -> "";
+convert([H|T], P) -> [convert_num(H,P), convert(T, P-1)].
+{code}where convert_num is a simple lookup based on value and position.  Because accumulating is for wimps.
+----
+Next Lance provided a solution so strange it took three attempts through three different methods to actually get a working copy submitted.  It then took a good 20 minutes to figure out exactly what was happening\!  While I'd love to have everyone figure it out on their own, I will let you in on the inner workings.
+
+The first thing to know that the ugly bottom section of the file is actually every roman numeral from 1 to 3999.  But zipped.  After that, here's what matters (match is the line number where the line noise begins...)
+
+{code}tail -n +$((match+1)) $0 | zcat -c - | tail -($(($max-$1+1)) | head -1
+{code}So it grabs the compressed file ($0 is the script), decompresses it, grabs the last (4000-your number) lines and takes the top off that.  And therein lies the answer.
+
+Well played sir.
+----
+Sheldon is back in the wild lands of Perl, where he prowls like some kind of polar bear looking for toothpaste (it's true, they love that stuff.)  Again we can essentially view his entire program:
+
+{code}for (reverse split//,shift) {
+  push @r, map{$a = $_; for $m (1..$mx++){$a =~ y/IVXLC/XLCDM/} $a} ("",qw(I II III IV V VI VII VIII IX))[$_];
+}
+{code}For those who don't know, y is the transliterate command in perl, which allows for shifting the representation as the position changes.  I find that pretty clever.
+----
+Darko initially submitted an "at least it's something" answer written in Java, but said he might teach himself something else over lunch to make it more interesting.  The fact that I mentioned that should make you realize that Darko did learn something else, and said he translated a Haskell solution into OCaml.  What?  Well, take a look:
+
+{code}let rec roman n xs ys =
+  if xs == [] || ys == [] then ""
+  else if n < hd xs then roman n (tl xs) (tl ys)
+  else hd ys ^ roman (n - hd xs) xs ys ;;
+{code}Another recursive functional solution, this using the "standard" lookup of mapping the unique digits (I, IV, V, IX, etc.) to their values (1, 4, 5, 9, etc.) which are stored in the lists xs and ys.  Just remember hd and tl are like car and cdr from Lisp and it's quite readable.  Purists might complain that Darko didn't use clausal function definitions, but we aren't that pedantic.
+
+Much more exciting than his original Java\!
+----
+Chi submitted a wee shell script, and if I reveal anything it will ruin the surprise of harnessing what might be the worlds largest publicly available server farm to do something so simple as convert a Roman numeral.  Just make sure you have gawk installed, or it won't work.  Cute.
+----
+Ruby Ronaldo brought in a solution that lets us to comparative language analysis, as he uses the same core algorithm Darko does, but expressed iteratively thusly (NUMERALS is a map that functions much like Darko's xs and ys lists):
+
+{code}result = NUMERALS.keys.sort {|a,b| b <=> a}.inject "" do |s,i|
+  while number >= i do
+    number -= 1
+    s += NUMERALS[i]
+  end
+  s
+end
+{code}So here we go through our digits and exhaust each one in the number before going to the next one.  How each one of these exhaustion point gets added to the value being constructed is through the magic of the Ruby inject accumulator, which assigns an initialization value to a block and then adds the result of each iteration back to the accumulator variable before passing it into the next iteration...
+----
+Finally, Dave gives us a solution in Java, which works in mysterious ways.  Actually, it's the third example in our comparative language analysis class.  Dave stores the digits and their roman counterparts in parallel arrays and then accumulates based on storing the position within those arrays as the number decrements:
+
+{code}if (number >= decimal[stage]) {
+  System.out.print(roman[stage]);
+  number -= decimal[stage];
+} else {
+  ++stage;
+}
+{code}Not bad, not bad at all.
+----

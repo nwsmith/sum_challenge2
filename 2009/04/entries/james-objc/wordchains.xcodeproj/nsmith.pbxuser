@@ -1,0 +1,60 @@
+// !$*UTF8*$!
+{
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 444E964E0FAABFFA003344D4 /* wordchains */;
+		activeTarget = 8DD76F960486AA7600D96B5E /* wordchains */;
+		codeSenseManager = 444E96550FAAC01A003344D4 /* Code sense */;
+		executables = (
+			444E964E0FAABFFA003344D4 /* wordchains */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 262848506;
+			PBXWorkspaceStateSaveDate = 262848506;
+		};
+		sourceControlManager = 444E96540FAAC01A003344D4 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	444E964E0FAABFFA003344D4 /* wordchains */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = wordchains;
+		sourceDirectories = (
+		);
+	};
+	444E96540FAAC01A003344D4 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	444E96550FAAC01A003344D4 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8DD76F960486AA7600D96B5E /* wordchains */ = {
+		activeExec = 0;
+		executables = (
+			444E964E0FAABFFA003344D4 /* wordchains */,
+		);
+	};
+}

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="RPSForm">
+  <grid id="27dc6" binding="basePanel" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="624" height="325"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="bfef" class="javax.swing.JTextPane" binding="txtPlayerOneScore">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="100"/>
+            <preferred-size width="180" height="100"/>
+            <maximum-size width="180" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background swing-color="Panel.background"/>
+          <editable value="false"/>
+          <font name="Verdana" size="72"/>
+          <text value="0" noi18n="true"/>
+        </properties>
+      </component>
+      <component id="cc09b" class="javax.swing.JTextPane" binding="txtPlayerTwoScore">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="100"/>
+            <preferred-size width="180" height="100"/>
+            <maximum-size width="180" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background swing-color="Panel.background"/>
+          <editable value="false"/>
+          <font name="Verdana" size="72"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="ebbf" class="javax.swing.JTextPane" binding="txtTieCount">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="100"/>
+            <preferred-size width="50" height="100"/>
+            <maximum-size width="180" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background swing-color="Panel.background"/>
+          <editable value="false"/>
+          <font name="Verdana" size="72"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="aee2d" class="javax.swing.JButton" binding="resetButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="100"/>
+            <preferred-size width="180" height="100"/>
+            <maximum-size width="180" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Reset"/>
+        </properties>
+      </component>
+      <component id="b8bcf" class="javax.swing.JButton" binding="runButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="100"/>
+            <preferred-size width="180" height="100"/>
+            <maximum-size width="180" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <icon value="fight.gif"/>
+          <inheritsPopupMenu value="false"/>
+          <label value=""/>
+          <rolloverEnabled value="false"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="1d7d9" class="javax.swing.JTextPane" binding="txtSpread">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="200" height="100"/>
+            <preferred-size width="200" height="100"/>
+            <maximum-size width="200" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background swing-color="Panel.background"/>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <font name="Verdana" size="72"/>
+          <text value=""/>
+        </properties>
+        <clientProperties>
+          <JEditorPane.honorDisplayProperties class="java.lang.Boolean" value="false"/>
+        </clientProperties>
+      </component>
+      <component id="6a396" class="javax.swing.JComboBox" binding="cmbProgramOne">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="20"/>
+            <preferred-size width="180" height="20"/>
+            <maximum-size width="180" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <enabled value="false"/>
+        </properties>
+        <clientProperties>
+          <html.disable class="java.lang.Boolean" value="false"/>
+        </clientProperties>
+      </component>
+      <component id="add3f" class="javax.swing.JComboBox" binding="cmbPlayerOne">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="20"/>
+            <preferred-size width="180" height="20"/>
+            <maximum-size width="180" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <enabled value="true"/>
+          <model/>
+        </properties>
+      </component>
+      <component id="3f1b4" class="javax.swing.JComboBox" binding="cmbProgramTwo">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="20"/>
+            <preferred-size width="180" height="21"/>
+            <maximum-size width="180" height="21"/>
+          </grid>
+        </constraints>
+        <properties>
+          <enabled value="false"/>
+        </properties>
+      </component>
+      <component id="8ffb1" class="javax.swing.JComboBox" binding="cmbPlayerTwo">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="20"/>
+            <preferred-size width="180" height="20"/>
+            <maximum-size width="180" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+        </properties>
+      </component>
+      <hspacer id="9765e">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="10" height="-1"/>
+            <preferred-size width="10" height="-1"/>
+            <maximum-size width="10" height="-1"/>
+          </grid>
+        </constraints>
+      </hspacer>
+      <vspacer id="d0c2d">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+            <preferred-size width="-1" height="10"/>
+            <maximum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="7cb55">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+            <preferred-size width="-1" height="10"/>
+            <maximum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <hspacer id="1ad05">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="10" height="-1"/>
+            <preferred-size width="10" height="-1"/>
+            <maximum-size width="10" height="-1"/>
+          </grid>
+        </constraints>
+      </hspacer>
+      <component id="73d0e" class="javax.swing.JProgressBar" binding="turnProgress">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="20"/>
+            <preferred-size width="180" height="20"/>
+            <maximum-size width="180" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <maximum value="1000"/>
+          <string value="0"/>
+          <stringPainted value="true"/>
+        </properties>
+      </component>
+      <component id="d81f0" class="javax.swing.JTextField" binding="turnCount">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="180" height="20"/>
+            <preferred-size width="180" height="20"/>
+            <maximum-size width="180" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <horizontalAlignment value="0"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

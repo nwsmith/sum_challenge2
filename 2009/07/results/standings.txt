@@ -1,0 +1,6 @@
+1. Case     20  6*
+2. Ron      25  5*
+3. Peter    26  4*
+4. Sheldon  30  3*
+5. Nathan   31  3*
+6. Darko    36  2

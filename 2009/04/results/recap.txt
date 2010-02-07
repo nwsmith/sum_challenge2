@@ -1,0 +1,360 @@
+This was a wild and crazy competition right to the end, with some outstanding entries from people with very different ideas of how to do things, which is exactly why we do these\!  So, without further ado, the final standings:
+
+h3. Overall Score
+|| name || score || challenge Score ||
+| nathan | 96.0 | 5 |
+| ron | 85.0 | 4 |
+| chi | 67.0 | 3 |
+| darko | 57.0 | 2 |
+| case | 52.0 | 2 |
+| peter | 46.0 | 2 |
+| james | 34.0 | 2 |
+| kobe | 24.0 | 2 |
+
+The final results for the fastest program were by far the clearest, with Nathan making a clean sweep and chi and ron sharing duties with next fastest.  All of the fastest programs were written in C or C+\+ for minimum overhead:
+
+h3. Fastest
+|| name || score ||
+| nathan | 70.0 |
+| ron | 61.0 |
+| chi | 59.0 |
+| case | 43.0 |
+| darko | 42.0 |
+| peter | 34.0 |
+| james | 28.0 |
+| kobe | 19.0 |
+
+The notes for the longest were quite a bit closer, with sevearl different algorithms leading to more parity.  Even here performance counted, as nathan's program often found longer chains, but in the cases where the chain's length was forced, Ron's faster program won out.
+
+h3. Longest
+||name||score||
+|nathan|26.0|
+|ron|24.0|
+|darko|15.0|
+|peter|12.0|
+|case|9.0|
+|chi|8.0|
+|james|6.0|
+|kobe|5.0|
+
+And now the individual word pairs.
+
+h3. ax->yo
+This pair was chosen primarily because it is possible to create a chain using all 95 two-letter words in the dictionary, and a few program did just that!  The speed for this chain was among the closest, although different programs degrade differently over time
+
+h4. fastest
+||name||time||score||
+|nathan|0.0025|10|
+|ron|0.0027|9|
+|chi|0.0029|8|
+|darko|0.0035|7|
+|case|0.0208|6|
+|james|0.0897|5|
+|peter|0.0958|4|
+|kobe|0.1469|3|
+
+h4. longest
+||name||length||time||score||
+|ron|95|0.1137|5|
+|nathan|95|0.1574|4|
+|darko|95|540.8097|3|
+|peter|91|2.5552|2|
+|chi|91|166.0142|1|
+|james|21|0.0897|0|
+|kobe|21|0.1972|0|
+|case|15|0.0208|0|
+
+h3. aal->aah
+This pair was chosen because the pair itself is a word chain.  Interesting to see if people optimize for this case (hint: they did!) and to see how many words could be crammed in between the two.  Quite a few.  This had the only tie for speed, and I ran the programs 6 times, but nathan still found one more word than Ron.  Crazy!
+
+h4. fastest
+||name||time||score||
+|nathan|0.0014|10|
+|ron|0.0014|10|
+|chi|0.0028|8|
+|darko|0.0047|7|
+|case|0.0200|6|
+|james|0.0923|5|
+|peter|0.0958|4|
+|kobe|0|0|
+
+h4. longest
+||name||length||time||score||
+|nathan|921|10.9279|5|
+|ron|920|3.4389|4|
+|chi|852|1547.3288|3|
+|peter|829|1.7218|2|
+|darko|3|553.0782|1|
+|case|2|0.0200|0|
+|james|2|0.0923|0|
+|kobe|0|0|0|
+
+h3. java->ruby
+This pair was chosen because the world is moving from Java to Ruby (just joking - don't throw anything at me!)  This is where the disparity in quickness algorithms starts to show...
+
+h4. fastest
+||name||time||score||
+|nathan|0.0026|10|
+|chi|0.0035|9|
+|ron|0.0040|8|
+|darko|0.0146|7|
+|case|0.0209|6|
+|peter|0.0960|5|
+|james|0.0974|4|
+|kobe|4.2504|3|
+
+h4. longest
+||name||length||time||score||
+|nathan|3383|419.6278|5|
+|darko|3369|560.1201|4|
+|ron|3360|205.3413|3|
+|peter|2140|0.9550|2|
+|chi|566|5192.4055|1|
+|james|183|0.0974|0|
+|kobe|40|0.2489|0|
+|case|15|0.0209|0|
+
+h3. print->cramp
+Just a couple of fairly random five letter words to have another sample case.  Slowly the disparities creep in.
+
+h4. fastest
+||name||time||score||
+|nathan|0.0029|10|
+|chi|0.0044|9|
+|ron|0.0066|8|
+|case|0.0246|7|
+|darko|0.0413|6|
+|peter|0.0955|5|
+|james|0.1197|4|
+|kobe|1.7534|3|
+
+h4. longest
+||name||length||time||score||
+|nathan|5356|7973.5690|5|
+|ron|5295|2703.0816|4|
+|darko|5058|703.4922|3|
+|peter|3795|2.2587|2|
+|chi|2278|11766.8713|1|
+|james|1181|0.1197|0|
+|case|102|0.0246|0|
+|kobe|29|1.1753|0|
+
+h3. yellow->orange
+It happens as things get older?  Whatever, I'm not sure.  
+
+h4. fastest
+||name||time||score||
+|nathan|0.0097|10|
+|ron|0.0123|9|
+|chi|0.0153|8|
+|darko|0.1034|7|
+|case|0.1874|6|
+|james|0.4676|5|
+|kobe|0.9517|4|
+|peter|5.6041|3|
+
+h4. longest
+||name||length||time||score||
+|nathan|5059|35142.9529|5|
+|ron|4910|13894.5049|4|
+|darko|4512|625.3950|3|
+|james|3292|0.4676|2|
+|peter|1958|5.6041|1|
+|case|1810|0.1874|0|
+|chi|1098|22523.6475|0|
+|kobe|96|0.9517|
+
+h3. atheist->heavens
+I chose this word pair, because there is no chain (attach non-existent metaphysical meaning of choice here.)  Peter's is the only true "longest" program that performed well here, I guess the other longest chains just tried to hard.
+
+h4. fastest
+||name||time||score||
+|nathan|0.0030|10|
+|chi|0.0061|9|
+|ron|0.0567|8|
+|peter|0.1058|7|
+|kobe|0.1466|6|
+|case|0.1659|5|
+|darko|0.1750|4|
+|james|0|0|
+
+h4. longest
+||name||length||time||score||
+|kobe|0|0.1466|5|
+|case|0|0.1706|4|
+|peter|0|0.2112|3|
+|chi|0|0.5569|2|
+|ron|0|0.9258|1|
+|nathan|0|1.2254|0|
+|darko|0|5.5570|0|
+|james|0|0|0|
+
+h3. slippery->slippers
+I chose this case not only because it is only two words one letter apart but because this is the only possible chain! 
+
+h4. fastest
+||name||time||score||
+|nathan|0.0024|10|
+|ron|0.0032|9|
+|chi|0.0065|8|
+|case|0.0308|7|
+|peter|0.0957|6|
+|james|0.1243|5|
+|darko|0.2345|4|
+|kobe|0|0|
+
+h4. longest
+||name||length||time||score||
+|case|2|0.0308|5|
+|james|2|0.1243|4|
+|ron|2|0.5440|3|
+|nathan|2|0.9888|2|
+|darko|2|8.9406|1|
+|peter|2|20.0645|0|
+|chi|0|0|0|
+|kobe|0|0|0|
+
+|total|
+|nathan|12|
+|ron|12|
+|case|12|
+|james|9|
+|chi|8|
+|peter|6|
+|darko|4|
+|kobe|0|
+
+A quick note folks, finding the longest chain between two nodes in a graph is an NP-Hard problem, which is what makes the challenge interesting - as the words get longer all we can hope for are approximations, either by cutting off based on time or some heuristic.
+
+I've attempted my best at explaining some of the work that was done.  Please correct any mistakes!
+
+h4. Chi
+h5. Fastest
+Chi's fastest was written ic C++ and is quite object oriented compared to some of the others.  He loads the dictionary into a vector, trimming all words that aren't the same length as the words in question.  What's interesting here is the use of priority queue, where the pririty function plays out like this, where distance is a count of how many characters are different between two strings:
+
+{code}
+if (distance(chain1.lastword) != distance(chain2.lastword))
+    return distance(chain2.lastword) < distance(chain1.lastword)
+else
+    return chain2.size < wc1.size
+end
+{code}
+
+in other words, either keep working with the word closest to the goal, or the shortest chain so far.
+
+In the core of the alogorithm, the highest priority chain is dequeued, and it searches the dictionary for all unseen words that are connected to the end of that chain.  It then creates a new chain with each of these words and puts them into the queue.  This forces the work of evaluating which chain is the most interesting to look at onto the priority queue, which is a pretty elegant way to do it.
+
+The algorithm stops either when the priority queue is empty (i.e. no solution) or the highest priority chain has reached the goal.
+
+Very nice.
+
+h5. Longest
+Chi's longest chain program was written is Scala and I particularly like how the distance function is expressed in Scala, it compares quite favorably with a Ruby version we will see in a bit:
+
+{code}
+def distance(strA: String, strB: String):Int = {
+  (0 until strA.length).foldLeft(0){(cnt, A) => cnt+(if (strA(A) == strB(A)) 0 else 1)}
+}
+{code}
+Beautiful!
+
+The program uses a very similar algorithm as his C++ version, with a priority queue, but instead of stopping when an end-to-end chain is found, it just stores that chain for later and continues to generate longer and longer chains.  As this is an NP-hard problem, to avoid going on until the summer, chi gives the main program loop only(!) 4000000 iterations before it goes with the longest chain found so far.  It's also smart enough to bow out when there is only one solution.
+
+h4. Case
+First off, it's generally always a good idea to read a case program because he leaves some fun comments.  His entry was written in Python that is then compiled to give a big performance boost.  (But perhaps not enough, as we will se...)
+
+He absolutely wins the award for best code to read in the dictionary file:
+
+{code}
+self.trie = set([line[:-1] for line in wordfile if len(line) == wordlen])
+{code}
+
+You might want to do some quick googling around list comprehensions in Python - very cool stuff.  As for how things go on, rather than the usual difference functions we've seen Case creates comparison templates in a way that could only make sense to a Pythonista.  First, he creates a "map" of letter indexes to the letter in each word:
+
+{code}
+self.letters = list(enumerate(zip("java", "ruby")))
+{code}
+
+which will give something like this:
+
+{code}
+(0, (j, r), 1, (a, u), ...)
+{code}
+
+Then this loop creates templates like
+_ava, j_va, ja_a, jav_
+The next trick is to try and find the next word using only the letters in this array.  So here we'd try rava jrva jara and javr.  If we don't find it here, then we try again, but using the letters of the alphabet.  In each case, one we come up with a word, we recursively call to make sure that the chain will continue, the recursion finally being over when we get to our base case, the goal.  Case did not right a longest chain program.
+
+h4. Peter
+Peter's program starts out be creating a graph (essentially an adjacency matrix) during the initial reading of the dictionary.  To avoid too much unnecessary work in later runs, this graph is written to file (very clever, this takes advantage of there being many runs in which to obtain a "best" time -- a few people talked about this, only Peter actually did it.  Remind me to change the rules in the futue!
+
+It then uses these chains to construct new chains, rejecting any that aren't longer or shorter (depending on what we're looking for) and once again writing data out to disk for the next run through, shoult it occur.  After a predetermined timeout, the program gives us the longest or shortest that it was able to find.
+
+Well done on the "cheating" with the file system Peter!
+
+h4. Kobe
+Kobe also went with Java, and wins the award (what, you didn't know there was an award?) for the lonest "are two words linke?" method at 17 lines.  At least there are comments!  As Kobe says, this is just a nice search for chains, so there's not much I can say about it -- go look at the code!
+
+h4. Darko
+h5. Fastest
+This is written in C++, but I'm not going to lie - I can't really figure out what the heck is going on.  We've got global variables, tiny variable names, and some odd formatting.  But it is pretty fast!
+
+h5. Longest
+Another Java entry.  Another adjency matrix graph implementation.  But there the similarities end.  In fact, that's where I end.  Once again, I can't really tell what's happening, so Darko wins the confuse the hell out of Smith award.
+
+h4. Ron 
+h5. Fastest
+Ron actually creates some data structures, which just eems like crazy talk to me.  He has a nice short cut for checking if the first and second word are already a chain (shame about all that checking to see if they are in the dictionary)  He's fairly agressive with pointers while putting together his data structures, which keeps the file processing time down (File processing was, in general, the bottleneck for most folks)  From here it appears to create a linked list of words, but it's pretty hard to read.
+
+h5. Longest
+For this one, ron builds a chain, and then continuously tries to cram more links into that chain.  Integeresting brute force method that ends up with some long chains and some surprisingly light run times (well, relatively)
+
+h4. James
+h5. Fastest and Longest
+Feel sorry for James, because he had to run on my Mac (his solution is in objective C)  I have no idea how it works and it's geting to be too late at night to figure it out, so maybe ask him!
+
+h4. Nathan
+h5. Fastest
+Nathan creates almost no data structures, allocates huge chunks of "just in case memory" only once, and then essentially brute forces his way through the data - there's even a goto for crying out loud!  The base premise is that the program loads the entire dictionary into memory and then just creates a working set out of pointers to that chunK
+{code}
+int j = 0;
+while (*dict_file) {
+  char *q = dict_file;
+  while (*dict_file++ != '\n) {
+    ++j;
+  }
+  if (j = length) {
+    dictionary[word_count++] = q;
+  }
+}
+{code}
+No strdup, no strcpy, just straight pointers.  The only driver as the program runs is that it attempts to pick the next word that has the most characters in common with the goal:
+{code}
+int affinity(char *f, char *s) {
+  int affinity = 0;
+  do {
+    (*f++ == *s++) ++affinity;
+  while (*f != '\0');
+  return affinity;
+}
+{code}
+Does it make things faster?  He seems to think so.  Unlike most of the other programs, this one is never confident that it is correct, so if it doesn't find a link, it back tracks and tries again, making this about as brute force of an algorithm as there is.  It may be ugly, but it's fast.
+
+h5. Longest
+Remember when I was going to come back to Chi's scala one liner?  Well how close does that look to the same idea in Ruby?  Just wild!
+
+{code}
+def link?(s)
+  (0..length).inject(0) {|t,i| t + (self[i] != s[i] ? 1 : 0)} == 1
+end
+{code}
+
+I find that really cool.  Nathan's program is similar to Ron's in that it creates a chain and then tries to lengthen that chain, but it uses a bit of a guide when creating the chain, it attempts to take the word "farthest away" from the goal, with another one liner:
+
+{code}
+def distance(s)
+  (0..length-1).inject(0) {|t,i| (self[i] - s[i]).abs}
+end
+{code}
+
+Maybe it seems like nothing, but it seems to make for a big chain.  This algorithm also has no confidence, so is greedy and will grab the goal whenever it's in sight and backtrack when trouble comes.  It creates some ridiculously long chains, but it takes forever to run (9 hours in one case)

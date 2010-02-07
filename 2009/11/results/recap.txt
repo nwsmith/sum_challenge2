@@ -1,0 +1,47 @@
+The sea was angry that day...
+
+11 combatants (+ bartbot) took to the field to vie for undisputed Rochambeau dominance.  There were tears, there was laughter, and Sheldon lost to bartbot.
+
+The tournament got under way with an 11-round round robin to seed the top 8 for the finals.  Some highlights:
+
+- Alex beats Nathan 7 to 5 with 488 ties
+- Sheldon loses to the bartbot
+- Darko beats Kobe 996 to 1, which is really impressive, but...
+- Dave beats Kobe 493 to 0, the only non-bartbot shutout
+
+In the end it came down to this:
+
+Quarter finals:
+Ron(1) vs. Lance(8) - Lance pulls off the revenge win by narrowly beating Fronto's 9 and 2 bot.
+
+Darko(2) vs. Nathan(7) - Darko dominates completely.  Nathan's bot goes to a corner to cry itself to sleep.
+
+Sheldon(3) vs. Kobe(6) - There was only one bot capable of beating Sheldon (well, besides bartbot), so his road ended here.
+
+Dave(4) vs. Brooks(5) - Brooks's pattern bot couldn't hold back the Charlton tidal wave.
+
+Semi finals.
+Dave(4) vs. Lance(8) - Lance's happy ending is destroyed by the Dave-o-matic death machine
+
+Darko(2) vs. Kobe(6) - Kobe couldn't even slow down the Darko Juggernaut as he mows down another
+
+Bronze medal round:
+Kobe(6) vs. Lance(8) - Lance can't handle the truth of Kobe throwing his own moves back at him, Kobe takes 3rd.
+
+Championship Round.
+Darko(2) vs. Dave(4) - Darko took 20 minutes to write his program, but it takes only 1 to take it all.
+
+When the dust settled, it all shakes out like so:
+
+|| Pos || Name || Points ||
+| 1. | Darko | 5 |
+| 2. | Dave | 4 |
+| 3. | Kobe | 3 |
+| 4. | Lance | 3 |
+| 5. | Alex | 2 |
+| 5. | Brooks | 2 |
+| 5. | James | 2 |
+| 5. | Nathan | 2 |
+| 5. | Ron | 2 |
+| 5. | Seth | 2 |
+| 5. | Sheldon | 2 |

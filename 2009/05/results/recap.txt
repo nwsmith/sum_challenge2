@@ -1,0 +1,67 @@
+h2. May 2009 Recap
+
+Ron was the first to enter, and he takes us into the Time Machine all the way back to old skool DOS with an entry in GW-BASIC, which was the first language for so many of us, which means all of our favorite features of BASIC:
+
+* GLOBAL VARIABLES REQUIRED\!
+* SIZE LIMIT OF 255\!\!
+* GOTOs APLENTY\!\!\!
+* AND, OF COURSE, LINE NUMBERS\!\!\!\!
+
+Ron goes with a marking algorithm that goes through once per continent, marking each, and then counts all the flags.
+
+Here's the counting code...
+
+{code}4006 CONTCOUNT = 0
+4010 FOR X4000 = 0 TO ROWNUM - 1
+4020   FOR Y4000 = 1 TO COLNUM
+4030     TOKEN = ASC(FNCHARAT$(LINES$(X4000), Y4000)) - ASC("A")
+4040     IF TOKEN < 0 OR TOKEN > 26 THEN GOTO 4080
+4050       IF RESULTS(TOKEN) > 0 THEN GOTO 4070
+4060         CONTCOUNT = CONTCOUNT + 1
+4070       RESULTS(TOKEN) = RESULTS(TOKEN) + 1
+4080   NEXT
+4090 NEXT
+4100 RETURN
+{code}Oh my.
+----
+Next up is Chi, who proves that Scala can be ruthless in its clarity.  It's hard to beat this one for elegance.  He processes the file directly into a list of tuples with the coordinates containing land:
+
+{code}var world = worldFile.zipWithIndex.flatMap(y => y._1.toList.zipWithIndex.flatMap(x => if (x._1 == '+') List ((x._2, y._2)) else Nil))
+{code}Then he grabs each of these tuples, expands it into the surrounding tuples, and then checks to see if there are any duplicates.  He then ditches the water, and checks if it matches the original list.  If it does, it's a continent, if it doesn't, then some recursion action takes place to see if he can find it.  All of that talking maps to this:
+
+{code}def getContinent(seed: List[Tuple2[Int, Int]]) : List[Tuple2[Int, Int]] = {
+    val expanded = seed.flatMap(p => for (x <- -1 to 1; y <- -1 to 1) yield((p._1+x,p._2+y))).removeDuplicates.intersect(world);
+    if (expanded == seed) seed else getContinent(expanded)
+}
+{code}Wow - how many lines of java would *that* take?
+----
+Darko brought in a submission using J, which is a relative of APL, which means it will automatically hurt your head to look at.  I thought it was assembler code at first, then I realized that assembler code would be readable\!
+
+Even with Darko's comments, this is a tough read.  As a quick example, this creates a 2D array of zeroes...
+
+{code}confusing_part=: 3 : '0,(((1+i.#y){(2 2+$y)$0)+(i.#y){|:(0,(|:y),0)),0'
+{code}I think this is actually Klingon for "Nathan isn't smart enough to understand this" - confusing_part indeed\!
+And who needs \++i when you have
+
+{code}i=.>:i
+{code}You should really run this one and give it a read, it's a different way of looking at things, that (like APL) actually does make sense once you start to decode the symbols.
+----
+Nathan brought in something that seems boring in comparison, using C#.  But he doesn't simple write Java in a different syntax: he takes advantage of the C# yield for grabbing the surrounding points for a given point (compare to the Scala version, which is nicer)
+
+{code}public IEnumerable EachAdjacent(Point p) {
+  int c = p.Col;
+  int r = p.Row;
+
+  foreach (int x in new int[]{-1, 0, 1}) {
+    foreach (int y in new int[]{-1, 0, 1}) {
+      if ((c+x > 0 && c+x < (width-1)) && (r+y > 0 && r+y < (height-1)) && content[c+x,r+y]) {
+        yield return new Point(c+x,r+y);
+      }
+    }
+  }
+}
+{code}His algorithm works in one sweep, marking each piece of discrete line found within a line with a marker.  As the code moves south, it also marks any neighbors to catch pieces that would be missed the first time through.
+
+Check out the source for how generics *should* work:
+{code}content = new T[width, height] //== win{code}and rectangular arrays (as opposed to arrays of arrays)
+----

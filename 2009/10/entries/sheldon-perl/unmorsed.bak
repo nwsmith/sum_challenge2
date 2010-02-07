@@ -1,0 +1,48 @@
+my %data = (
+    A => '.-',
+    N => '-.',
+    B => '-...',
+    O => '---',
+    C => '-.-.',
+    P => '.--.',
+    D => '-..',
+    Q => '--.-',
+    E => '.',
+    R => '.-.',
+    F => '..-.',
+    S => '...',
+    G => '--.',
+    T => '-',
+    H => '....',
+    U => '..-',
+    I => '..',
+    V => '...-',
+    J => '.---',
+    W => '.--',
+    K => '-.-',
+    X => '-..-',
+    L => '.-..',
+    Y => '-.--',
+    M => '--',
+    Z => '--..',
+);
+
+my %reversed;
+map {$reversed{$data{$_}} = $_} keys %data;
+
+my %as_morse;
+open (my $fh, "<", "/usr/share/dict/words") || die "Couldn't open dictionary";
+while (<$fh>) {
+    chomp;
+    next unless /^[A-z]+$/;
+    my $word = uc($_);
+    my $code = $word;    
+    $code =~ s/(.)/$data{$1}/eg;
+    push @{ $as_morse{$code} }, uc($word) unless grep { $_ eq $word } @{ $as_morse{$code} };
+}
+
+my $val = $ARGV[0];
+if ($as_morse{uc($val)}) {
+    print "$_\n" for @{ $as_morse{$val} };
+    exit;
+}

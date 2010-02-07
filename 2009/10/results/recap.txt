@@ -1,0 +1,214 @@
+Seven entries this month - so much recursion!!!
+
+----
+h2. Chi (Scala)
+
+The power of this Scala entry comes down to a single line:
+
+{code}
+morse.flatMap(e => if(s.startsWith(e._2)) decode(s.substring(e._2.length)).map(z=>e._1+z) else Nil)
+{code}
+
+In context "s" is the morse code we are currently looking to decode.
+
+Scala's flatMap is like bind in Haskell (or a combinaion of "map" and "flatten" in Ruby.)  Or if you don't have those reference points, think of it as Scala's flatMap.
+It iterates over a collection and applies a function to each element, but it ensures that the result is a single flattened list (as opposed to a list that can potentially contain sublists, which could contain sublists, which...well, you get it now).
+These kinds of constructs are handy in algorithms like this, where we do a lot of arbitrarily produced branching.
+
+So we go through our morse code letters (Note that inside the call, e is a map entry, _1 is the letter (e.g. 'e) and _2 is the morse code (e.g. '.').
+If our string starts with the morse code for the letter, then trim the matching morse code off the front and call us again with the remainder.
+This recurses until the base case, which is an empty string.
+At this point the map call at the end of the decode call will construct the actual english representation for each combination we find.
+And that's it!
+
+Scala's built in set operations make checking against the dictionary nice and trivial:
+
+{code}
+decoded.intersect(dict)
+{code}
+
+decoded is all our combinations, and dict is our dictionary, intersect is a method that calculates the intersection between the sets, nice and simple.
+----
+h2. Case (Clojure)
+
+Basically, before you read this clojure program, realize that clojure, for all intents and purposes, is lisp.
+
+Now, the first difference we see is that the map goes from morse code to the alphabet, which is a different route to take.
+One thing that is a departure from most functional programs is that is carries around the results accumulator, while technically it never mutates, clojure is the enemy of the state!  This does, however, avoid the need to flatten the list, as required by other functional entries.
+
+I think my favorite part of the whole thing is that the recursive call is actually using the result of the recursion as a parameter in the original call. (Whaaaaaa?!)  Maybe it's best just to look at it.  LOOK AT IT!!!
+
+{code}
+        (morsify accum (str codefragment (first remainder)) (next remainder) 
+          (morsify (str accum (codes codefragment)) (str (first remainder)) (next remainder) found)
+        )
+{code}
+
+It continuously creates strings from the accumulator value (the string we're making) and the letter matching the current code fragment.
+It then calls itself using the first of the rest of the string as the next code fragment (if you're lost, that's okay)
+Eventually it runs out of "the rest of the string", so we throw it in the accumulator and wait for everyone to be done.
+----
+h2. Ron (C++)
+
+This C++ program uses what you will recognize as the standard algorithm, but does it in a *completely* different way.
+It takes the "Morse Code is a binary code" and makes it literal, using bit vectors to represent EVERYTHING.  MADNESS!!!
+It does result in fun code like this (ah, how I miss you uint*...oh wait, no I don't!)
+
+{code}
+void set_bit(uint* arr, uint bit_num, int val) {
+    uint idx = bit_num / (sizeof(uint) * 8);
+    uint value = arr[idx];
+    value = set_bit(value, bit_num, val);
+    arr[idx] = value;
+}
+{code}
+
+I know, I know, you're thinking "why is there a division instead of a shift in there" and I say "Wrong!  This is important for readability."
+But you won't actually see any code as nice as that, because it looks like this:
+
+{image}
+
+That's right - the code is laid out in Morse Code ascii art!  Unreadable C++ code rendered more unreadable!  And we though Sheldon's Perl stuff was scary....
+
+By the way, exactly what the program spells (and it does spell something) is left as an exercise for the reader.
+----
+h2. Nathan (Clojure)
+
+Ah, more clojure.  This one is a actually quite a bit like the scala program, here's the bit that matters:
+
+{code}
+(defn from-morse [morse match]
+  (if (= "" morse) match
+    (for [l (keys morse-map) :when (.startsWith morse (morse-map l))]
+      (list (from-morse (subs morse (count (morse-map l))) (str match l))))))
+{code}
+
+A simple algorithm.
+For every morse letter that could start this string, add it to a new string, decapitate the letter just matched, and keep going while there's something left.
+The cool bit is how "every morse letter that could start this string" is calculated.
+It uses the "for" statement, which in clojure doesn't mean what you think it means - it's actually a list comprehension (now all we need is a clojure comprehension...).
+What nice is the syntax of ":when (.startsWith morse (morse-map l))" restricts the "comprehended" list to only those letters that could actually start the string, removing the need for any extraneous comparisons.
+
+The rest is straightforward.
+----
+h2. James (Java)
+
+Another month, another show of power for regular expressions in Java!  This solution depends on a really cool idea, basically an enum for the morse code characters, that's something like this:
+
+{code}
+    A("\\.-.*", 2),
+    B("-\\.\\.\\..*", 4),
+    C("-\\.-\\..*", 4),
+    D("-\\.\\..*", 3),
+{code}
+
+where each letter has its morse code regex and length encoded into the enum.  The algorithm from there is the standard "if we match the start, add it to the string, and keep on with the rest", but it does look a little nicer because of the enum, the main logic is just this big:
+
+{code}
+        for (MorseCodeCharacter curr : MorseCodeCharacter.allCharacters) {
+            if (code.matches(curr.getRegex())) {
+                String newCode = code.substring(curr.getLength());
+                List<MorseCodeCharacter> next = new ArrayList<MorseCodeCharacter>(prev);
+                next.add(curr);
+                if (newCode.length() == 0) {
+                    displayWord(next);
+                } else {
+                    decode(next, newCode); 
+                }
+            }
+        }
+{code}
+
+Not bad for java code!
+----
+h2. Darko (Java)
+
+Someone found out you can use arrays as hashmaps!  Maybe it'll make a little more sense if we look at how the structures are initialized:
+
+First is letters, which is an array of arrays (or faux map, if you will, where each value is a list of letters and the key is the length of the morse code representation of each letter.)  
+
+{code}
+letters [0] -> {}
+letters [1] -> {'E', 'T'}
+{code}
+
+Next is codes, which is the same as letters, but the for the morse code:
+
+{code}
+codes [0] -> {}
+codes [1] -> {'.', '-'}
+{code}
+
+Finally we have len, an array that keeps track of how many morse code representations exist with that many characters.
+
+len [0] -> 0
+len [1] -> 2
+
+The actual building of the letters is rather good with memory, which means it's almost impossible to understand ;-)  Take a deep breath....
+
+The decode method is called with the current position in the string.
+This method then goes through the len array for all characters with a length less the the rest of the string from position.  (That just means that if we have .- left, don't bother with 3 and 4 character morse codes)
+It then iterates through all the codes at that length and compares them against that section of the string, looking for a match.
+If there is no match (the joy of morse code is that there is always a representation for the full string) we're done.
+If there is a match, we recurse (yay!) with the next position (based on the length of the match).
+Here's where it gets tricky (that's right, all of that before this was the easy bit!):
+
+There is only one array that stores the words that are being built up (rather than an accumulator for each word as you see in other programs) with a size variable:
+
+{code}
+        int kk = 1;
+        while (kk < 5 && kk + pos <= code.length()) {
+            for (int i = 0; i < len[kk]; i++) {
+                if (code.substring(pos, pos + kk).equals(codes[kk][i])) {
+                    a[size++] = letters[kk][i];
+                    go(pos + kk);
+                    size--;
+                }
+            }
+            kk++;
+        }
+
+{code}
+
+Now you can see why it's good with memory!  Once decode is called with a positiong equal to the length of what we're translating, it just constructs a new String using the master array and the size variable.
+
+If it hasn't hit you yet, this isn't Java as much as C with garbage collection...
+
+----
+h2. Sheldon (Perl)
+
+This program is a lot of fun, but unfortunately doesn't meet the requirements of the competition, so it won't it can't be counted for voting.  However, it does filter the words by the dictionary, so since we're so nice, we'll give it two points - a "thanks for entering" point as well as the dictionary bonus.  The real neat part of the program is that the source code is formatted as morse code:
+
+{code}
+use Acme::Morse
+.--.-..--..---.-.--..--.-..--..---.-.--.
+-.--.--.-..----......-..-.-..-....-..--.
+-....--...-.---.-....--......-..-.----..
+.....-.....-.-...-.-.........-.......-..
+.....-.......-..-.....-......-..-.----..
+.-----.......-..---..-...---.-..-.--.-..
+---..-....--.-...-.-.........-.......-..
+.....-.......-...---..-......-..-.----..
+.-----.......-..---..-..-.--.-...---.-..
+---..-....--.-...-.-.........-.......-..
+.....-.......-...-....-......-..-.----..
+.-----.......-..---..-..-.--.-...---.-..
+.---.-...---.-..---..-....--.-...-.-....
+.....-.......-.......-.......-..----..-.
+.....-..-.----...-----.......-..---..-..
+-.--.-..-.--.-..-.--.-..---..-....--.-..
+.-.-.........-.......-.......-.......-..
+{code}
+
+All Perl readability jokes aside, I find this Perl unreadable!  This is just an excerpt, but you get the picture.
+
+We've happily been provided with a non-morse copy, which is in the competition archive.  The algorithm can be seen from there.  
+Basically the standard map of <char>-><morsecode> is made, and then it goes through the dictionary and changes each word by replacing the word with it's morse representation:
+
+{code}
+$code =~ s/(.)/$data{$1}/eg;
+{code}
+
+once this procedure is finished, there is basically a giant dictionary of all morse code combinations found in the dictionary pointing to a list of words it may represent.  
+The final program just checks if the morse string used as input is a key in this hash, and if it is, spits out the content of the array.  
+Clever way to use the dictionary, but avoids the complications of getting all combinations. 

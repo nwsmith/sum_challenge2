@@ -1,0 +1,78 @@
+Four entries this month - must be that holiday hangover!!!
+
+----
+h2. (Bash)
+
+You use it every day, ls-ing aways without realizing that you can do some crazy stuff in bash (okay, it's no zsh, but we won't hold that against it!) because it's a programming language.  I'm not quite sure if this program works because it breaks everything into pairs and shuffles them, but we're not strictly pairwise here, but we always need random numbers:
+
+{code}
+get_random_number() { 
+  from=$1 
+  to=$2 
+  let "range=$to-$from-1" 
+  number=0 
+   
+  if [ "$range" -gt 0 ]; then 
+    number=$RANDOM 
+    let "number %= $range" 
+    let "number=$number+$from+1" 
+  fi 
+ 
+  return $number 
+}
+{code}
+
+----
+h2. (Java)
+
+Why bother with randomness when you can just build a graph?  Here we have an adjacency matrix where good pairs connect (or we have a 2d bit field where good pairs are true, whatever):
+
+{code}
+for (int i = 0; i < n; i++) {
+  matchL[i] = matchR[i] = -1;
+  for (int j = i + 1; j < n; j++) {
+    g[i][j] = g[j][i] = !lastNames.get(i).equals(lastNames.get(j));
+  }
+}
+{code}
+
+So basically if the entries @ i and j aren't in the same family, let us remember that.  Then we can take g and pair up!  Not as naive as the others...
+----
+h2. (Objective C)
+
+This objective C program had the mission of working in linux.  That means this objective C program had the mission of implementing a string.  And a list.  Because that stuff just isn't available unless you write it (or work on a Mac).  Here we have the swap random if same family algorithm:
+
+{code}
+void matchSantas(List *srcList, List *destList) { 
+    [destList shuffle]; 
+    int i = 0; 
+    int j = [srcList length]; 
+ 
+    while (i < j) { 
+        Person *p1 = (Person*) [srcList at: i]; 
+        Person *p2 = (Person*) [destList at: i]; 
+ 
+        if ([p1 isSameFamily: p2]) { 
+            [destList swap: i with: random() % j]; 
+            i = 0; 
+        } else { 
+            ++i; 
+        } 
+    } 
+} 
+{code}
+----
+h2. (Perl)
+
+I guess it's just not a Solium challenge without a Perl program. Like usual, here's the whole thing:
+
+{code}
+#!/usr/bin/perl
+while(<>){/\s(\w+)\s<(\S+)>/;push@p,[$1,$2]}@r=reverse(0..@p-1);
+sub f{$a=shift;foreach(@r){return 0 if$$a[$_][0]eq$$a[$_-1][0]}1}
+@p=sort{(-1,1)[rand 2]}@p until f(\@p);
+foreach(@r){print"$p[$_][1]->$p[$_-1][1]\n"}
+{code}
+
+So...the first line reads in the file.  The second checks if the pairings are valid.  The third randomizes until something valid pops up.  The fourth prints the result.
+ugh.

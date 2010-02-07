@@ -1,0 +1,119 @@
+Ah, reversing a string is such a simple, simple task.  Our first entry is so simple that it's, well, ridiculous:
+
+[Go Vote Now!|http://spreadsheets.google.com/viewform?hl=en&formkey=dC15Z0xDcUhkT3FsclhrZDh0bUdockE6MA]
+
+[This months entries|^January2010.zip]
+
+h2. Ruby
+
+As with so many Ruby entries, here is the code in it's entirety:
+
+{code}
+#!/usr/bin/ruby
+puts ARGV[0].reverse
+{code}
+
+And, well, that's all there is to say about that.
+
+----
+
+h2. Javascript(1)
+
+This entry will make you jump (jump).  The first (but not the last!) entry to contain extraneous media to attempt to distract (hint: it works!), check out this:
+
+!KrissKrossReverse.jpg!
+
+Codewise it's a pretty simple read the string in reverse, but hey, Kriss freakin' Kross!!11!!
+
+{code}
+var i = myInput.length - 1;
+var reversedString = '';
+for (i; i >= 0; i--){
+  reversedString = reversedString + myInput.charAt(i);
+}
+{code}
+
+----
+
+h2. HTML 
+
+I know, I know, you're thinking "It's not an html entry, there must be embedded javascript", but you'd be thinking totally wrong.  Through the miracles of webkit css extensions and bidi rendering, we get the following:
+
+!ReverseThisString.jpg!
+
+The first is achieved in style (yeah Ron, a pun.  Sorry everyone.)
+
+{code}
+.reverse {
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+{code}
+
+The second by using right-to-left rendering.  Sweet!
+{code}
+<bdo dir="rtl">Reverse this string</bdo>
+{code}
+
+----
+
+h2. C
+
+From html to almost the exact opposite we head into C land.  Of course, reversing a string in C isn't interesting unless you do it in place, so of course that's what this program does.
+
+{code}
+  int fwdIndex;
+  int revIndex=0;
+  for(fwdIndex=length-1; fwdIndex >= 0; fwdIndex--,revIndex++) {
+    *(revString+revIndex) = *(inputString+fwdIndex);
+  }
+  *(revString+revIndex) = '\0';
+{code}
+
+I love the smell of pointer arithmetic in the morning.
+
+----
+
+h2. Clojure
+
+Second in the "watch me distract you with media" spotlight is this lovely clojure entry that will make you jump back from your monitor in fear:
+
+!the_chuck.jpg!
+
+Only Chuck can hit a string so hard it does whatever he wants it to do (in this case he wants it to reverse, but he could make it run if he wanted to)
+
+The algorithm itself...well, it's about the same as the Ruby entry (but with more Chuck)
+
+{code}
+(let [reversed-string (apply str (reverse input-string))]
+{code}
+
+----
+
+h2. Javascript (2)
+
+Finally, more Javascript.  This one does things a little different.  Rather than just reverse the ascii string, it instead renders it as an image (using an html table filled with 1x1 pixel cells no less).  The actual reversing (or mirroring as the case may be) is done only manipulating the bits of the image, not using string operations.  Weird.
+
+!javascript_render.jpg!
+Rendered
+
+!javascript_reverse.jpg!
+Reversed
+
+Here's one of the functions...
+{code}
+function drawBitfield(x, y, bitfield) {
+  var yy = y;
+  for (var i = 0; i < width; ++i, ++x) {
+    y = yy;
+    for (var j = 0; j < height; ++j, ++y) {
+      if (bitfield[j][i] == 1) {
+        paint(x, y, "#000000");
+      } else {
+        paint(x, y, "#FFFFFF");
+      }
+    }
+  }
+}
+{code}

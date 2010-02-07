@@ -1,0 +1,19 @@
+10  GW-BASIC -- old school to the EXREME!!!
+20
+30  A simple algorithm for a simple language.
+40 
+50  After loading the map into memory it finds a + and changes it to a
+60  marker character. Then it proceeds to scan the map from north to 
+70  south changing each adjacent + to the marker character. Once it does a 
+80  pass without any changes it selects a different marker character and 
+90  repeats the process with the next land mass until there are no remaining 
+100 landmasses.
+110
+120 Once it is done it counts all the different characters and prints out 
+130 the result.
+140
+150 You can get the gw-basic interpreter at:
+160 http://www.geocities.com/KindlyRat/GWBASIC.html
+170
+180 And run the program:
+190 GWBASIC.EXE program.bas

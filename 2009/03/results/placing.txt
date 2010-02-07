@@ -1,0 +1,12 @@
+1. Case     95  5
+2. Nathan   92  4
+3. Sheldon  89  3
+4. Chi      80  2
+5. Ron      78  2
+6. Lance    71  2
+7. Darko    59  2
+8. Dave     53  2
+9. James    45  2
+10.Lloyd     0  2
+
+(Note: lloyd was ineligible for voting, as his was late)
