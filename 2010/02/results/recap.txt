@@ -1,0 +1,76 @@
+This problem is interesting, because while it's really quite simple, it's not quite as simple as it seems.
+
+[Go Vote Now!|http://spreadsheets.google.com/viewform?hl=en&formkey=dFhPbGZpbkNneG5FbHJPbXJRbmREM0E6MA]
+
+[This months entries|^February2010.zip]
+
+h2. Clojure
+
+It's St. Patrick's day and Chuck Norris is looking to get drunk.  But y'all better run, because this is one enraged right wing republican with a roundhouse who takes no prisoners.
+
+The program itself is in Clojure (If Chuck Norris was a programmer he'd program in Clojure.) We use a popular method whereby we sort the days into a list and then output it. 
+
+Representative line:
+
+{code}
+(if (= end-range-index 0) 
+  (cons (list (first sorted-seq)) (construct-ranges (rest sorted-seq)))
+  (cons (list (first sorted-seq) (nth sorted-seq end-range-index)) 
+    (construct-ranges (drop (+ 1 end-range-index) sorted-seq))))
+{code}
+
+Representative picture:
+
+!the_chuck.jpg!
+
+----
+
+h2. Javascript
+
+Javascript gets a bad rap (not Vanilla Ice bad, but bad), but it's a pretty cool little language.  This entry builds the string on the fly (like Will Smith, aka Big Willie Style)
+
+Representative line:
+
+{code}
+str += daysConst[list[list.length - 1] - 1] + ' ';
+{code}
+
+----
+
+h2. Perl
+
+You know, I'm sure a lot of people thought about doing this with a regular expression, only to decide that it can't be done.  Yet...you're wrong.  Not only does this use a hideous (or beautiful...eye of beholder and all that) regular expression, but an Exorcist-level possession the program overloads the print function so that you can print out the days of the week function with the print command.  Now in general, that makes the print command completely useless, but for the purposes of this program, it's perfect!!!
+
+Representative line (see the zip file for a nice commented version):
+
+{code}
+s/(\d+)(?:,((??{$++1}))){2,}+/$1-$+/gx
+{code}
+
+----
+
+h2. Scala
+
+Scala folds lists like industrial folding robots fold laundry.  It would just seem wrong to have a Scala program that didn't fold *something* (paper, shirts, time-space...) so I'm really glad that this one does.
+
+Representative line:
+{code}
+val o = in.foldRight(List[Tuple2[Int,Int]]()) {(n,l) => if (!l.isEmpty && l.first._1 == (n+1)) (n,l.first._2)::l.tail else (n,n)::l}
+{code}
+
+Tuple2 FTW!
+
+----
+
+h2. Ruby 
+
+You know, it's just not a Ruby program if I understand what's going on (well, except for the reverse string program, my dog understands that and he's not the sharpest knife in the block), but this one is also building a list and then outputting it.
+
+Representative Line:
+
+{code}
+d.each_index {|i| s << "#{d[i]=="-"?d[i]:t[d[i].to_i-1]}#{"," if (d[i] != "-" && d[i+1] != "-" && i < (d.size-1))}"}
+{code}
+
+Yeah, I know it's simply outputting the day and then a comma or dash, but still...
+
