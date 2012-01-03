@@ -1,0 +1,6 @@
+||Place||Name||Points||
+| 1. | Sheldon | 5 |
+| 2. | Ron | 4 |
+| 3. | Chi | 3 |
+| 3. | Nathan | 3 |
+| 5. | Kobe | 2 |
